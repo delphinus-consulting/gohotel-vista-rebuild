@@ -52,7 +52,20 @@ const ProductTheTu = () => (
               <li>Khả năng tích hợp với các hệ thống khác (điều khiển điện, thang máy...)</li>
               <li>Dễ dàng cấp lại hoặc vô hiệu hoá thẻ khi cần</li>
             </ul>
-            <Link to="/san-pham" className="text-[#142684] font-medium hover:underline">← Quay lại danh sách sản phẩm</Link>
+            <h4 className="text-xl font-semibold mt-8 mb-4">Công nghệ RFID hiện đại</h4>
+            <p className="text-gray-700 mb-4">
+              Sử dụng công nghệ nhận dạng qua tần số vô tuyến (RFID), thẻ từ cung cấp một phương thức xác thực an toàn và nhanh chóng. 
+              Mỗi thẻ được mã hoá với một định danh duy nhất, không thể sao chép, đảm bảo chỉ người có thẻ hợp lệ mới có thể truy cập.
+            </p>
+            <img
+              src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=600&q=80"
+              alt="Công nghệ RFID"
+              className="w-full h-64 object-cover rounded-lg my-4"
+            />
+            <p className="text-gray-700 mb-4">
+              Dễ dàng tích hợp với hệ thống quản lý khách sạn để ghi nhận thời gian ra vào, quản lý quyền truy cập và thậm chí là thanh toán các dịch vụ trong khách sạn.
+            </p>
+            <Link to="/san-pham" className="text-[#142684] font-medium hover:underline mt-6 inline-block">← Quay lại danh sách sản phẩm</Link>
           </CardContent>
         </Card>
       </div>

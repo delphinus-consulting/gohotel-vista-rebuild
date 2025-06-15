@@ -52,7 +52,21 @@ const ProductKhoa = () => (
               <li>Lưu lại lịch sử ra vào phòng</li>
               <li>Tích hợp với hệ thống phòng và quản trị khách sạn</li>
             </ul>
-            <Link to="/san-pham" className="text-[#142684] font-medium hover:underline">← Quay lại danh sách sản phẩm</Link>
+            <h4 className="text-xl font-semibold mt-8 mb-4">An toàn và Tiện lợi</h4>
+            <p className="text-gray-700 mb-4">
+              Khoá thông minh không chỉ mang lại vẻ ngoài hiện đại cho khách sạn mà còn nâng cao đáng kể mức độ an toàn. 
+              Với tính năng ghi lại lịch sử truy cập, ban quản lý có thể dễ dàng kiểm tra ai đã ra vào phòng và vào thời điểm nào.
+            </p>
+            <img
+              src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80"
+              alt="An toàn và Tiện lợi"
+              className="w-full h-64 object-cover rounded-lg my-4"
+            />
+            <p className="text-gray-700 mb-4">
+              Trong trường hợp mất thẻ, khoá có thể được vô hiệu hoá từ xa và một thẻ mới có thể được cấp ngay lập tức, 
+              loại bỏ hoàn toàn rủi ro so với chìa khoá cơ truyền thống.
+            </p>
+            <Link to="/san-pham" className="text-[#142684] font-medium hover:underline mt-6 inline-block">← Quay lại danh sách sản phẩm</Link>
           </CardContent>
         </Card>
       </div>

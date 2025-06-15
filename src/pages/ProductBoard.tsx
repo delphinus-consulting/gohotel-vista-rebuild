@@ -53,7 +53,22 @@ const ProductBoard = () => (
               <li>Dễ dàng kết nối các thiết bị thông minh khác</li>
               <li>Tối ưu hoá chi phí vận hành và bảo trì</li>
             </ul>
-            <Link to="/san-pham" className="text-[#142684] font-medium hover:underline">← Quay lại danh sách sản phẩm</Link>
+            <h4 className="text-xl font-semibold mt-8 mb-4">Tích hợp hệ thống thông minh</h4>
+            <p className="text-gray-700 mb-4">
+              Board mạch cho phép kết nối và đồng bộ với phần mềm quản lý khách sạn (PMS), 
+              giúp nhân viên có thể điều khiển và giám sát trạng thái nguồn điện của từng phòng từ xa. 
+              Điều này không chỉ mang lại sự tiện lợi mà còn giúp phát hiện sớm các sự cố về điện.
+            </p>
+            <img
+              src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=600&q=80"
+              alt="Tích hợp hệ thống"
+              className="w-full h-64 object-cover rounded-lg my-4"
+            />
+            <p className="text-gray-700 mb-4">
+              Hệ thống tự động ngắt điện các thiết bị không cần thiết khi khách rời phòng và tự động bật lại khi khách quay trở lại, 
+              dựa vào tín hiệu từ khoá thẻ từ.
+            </p>
+            <Link to="/san-pham" className="text-[#142684] font-medium hover:underline mt-6 inline-block">← Quay lại danh sách sản phẩm</Link>
           </CardContent>
         </Card>
       </div>
