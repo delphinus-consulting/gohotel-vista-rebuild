@@ -256,7 +256,7 @@ const Index = () => {
                     <li>• Database: PostgreSQL 12+ hoặc MySQL 8.0+</li>
                     <li>• Dung lượng lưu trữ: Tối thiểu 100GB</li>
                     <li>• Backup tự động: Hàng ngày</li>
-                    <li>• Thời gian phản hồi: < 200ms</li>
+                    <li>• Thời gian phản hồi: {"<"} 200ms</li>
                   </ul>
                 </div>
                 
@@ -283,7 +283,7 @@ const Index = () => {
                     <li>• Đồng thời: 1000+ người dùng</li>
                     <li>• Giao dịch/giây: 500+</li>
                     <li>• Uptime: 99.9%</li>
-                    <li>• Thời gian tải trang: < 3 giây</li>
+                    <li>• Thời gian tải trang: {"<"} 3 giây</li>
                   </ul>
                 </div>
                 

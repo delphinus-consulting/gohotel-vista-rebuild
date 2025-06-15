@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -159,7 +158,7 @@ const CustomerManagement = () => {
                 </div>
                 <div className="flex justify-between items-center">
                   <span>Thời gian phản hồi</span>
-                  <Badge className="bg-purple-100 text-purple-800">< 2h</Badge>
+                  <Badge className="bg-purple-100 text-purple-800">{"<"} 2h</Badge>
                 </div>
                 <div className="flex justify-between items-center">
                   <span>Tăng trưởng khách hàng VIP</span>
