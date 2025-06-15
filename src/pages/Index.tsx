@@ -17,10 +17,11 @@ const Index = () => {
           </div>
           <nav className="hidden md:flex space-x-6">
             <a href="#features" className="text-gray-600 hover:text-[#142684] transition-colors">Tính năng</a>
+            <Link to="/san-pham" className="text-gray-600 hover:text-[#142684] transition-colors">Sản phẩm</Link>
             <a href="#benefits" className="text-gray-600 hover:text-[#142684] transition-colors">Lợi ích</a>
             <a href="#pricing" className="text-gray-600 hover:text-[#142684] transition-colors">Giá cả</a>
             <Link to="/tin-tuc" className="text-gray-600 hover:text-[#142684] transition-colors">Tin tức</Link>
-            <Link to="/contact" className="text-gray-600 hover:text-[#142684] transition-colors">Liên hệ</Link>
+            <a href="/contact" className="text-gray-600 hover:text-[#142684] transition-colors">Liên hệ</a>
           </nav>
           <Button className="bg-[#142684] hover:bg-[#0f1f6b] text-white">
             Dùng thử miễn phí
