@@ -6,6 +6,7 @@ import { Hotel, Users, Calendar, CreditCard, BarChart3, Shield, Clock, Star, Che
 import { Link } from "react-router-dom";
 import { Header } from '@/components/layout/Header';
 import { TrialForm } from '@/components/forms/TrialForm';
+import { DemoDialog } from '@/components/dialogs/DemoDialog';
 import { HashLink } from 'react-router-hash-link';
 
 const Index = () => {
@@ -31,9 +32,11 @@ const Index = () => {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </HashLink>
             </Button>
-            <Button size="lg" variant="outline" className="border-white hover:bg-white text-slate-950">
-              Xem demo
-            </Button>
+            <DemoDialog>
+              <Button size="lg" variant="outline" className="border-white hover:bg-white text-slate-950">
+                Xem demo
+              </Button>
+            </DemoDialog>
           </div>
         </div>
       </section>
