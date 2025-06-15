@@ -1,5 +1,5 @@
 {
-  "name": "worker-name",
+  "name": "gohotel",
   "compatibility_date": "2025-06-15",
-  "main": "src/main.tsx"  
+  "main": "src/main.tsx"
 }
