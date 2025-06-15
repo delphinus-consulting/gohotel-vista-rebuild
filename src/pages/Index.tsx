@@ -323,8 +323,14 @@ const Index = () => {
                     <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
                     Quản lý đa chi nhánh
                   </li>
-                  
-                  
+                  <li className="flex items-center">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    Tích hợp ERP
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    Hỗ trợ 24/7
+                  </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
                     Tùy chỉnh theo yêu cầu
