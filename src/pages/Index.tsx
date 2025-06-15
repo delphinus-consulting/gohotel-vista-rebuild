@@ -2,29 +2,9 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Hotel, 
-  Users, 
-  Calendar, 
-  CreditCard, 
-  BarChart3, 
-  Shield, 
-  Clock, 
-  Star,
-  CheckCircle,
-  ArrowRight,
-  Phone,
-  Mail,
-  MapPin,
-  Gift,
-  Settings,
-  Database,
-  Zap
-} from "lucide-react";
-
+import { Hotel, Users, Calendar, CreditCard, BarChart3, Shield, Clock, Star, CheckCircle, ArrowRight, Phone, Mail, MapPin, Gift, Settings, Database, Zap } from "lucide-react";
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="bg-white shadow-sm border-b">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -60,7 +40,7 @@ const Index = () => {
               Dùng thử miễn phí 30 ngày
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#142684]">
+            <Button size="lg" variant="outline" className="border-white hover:bg-white text-slate-950">
               Xem demo
             </Button>
           </div>
@@ -193,9 +173,7 @@ const Index = () => {
                 <p className="text-4xl font-bold text-[#142684] mb-2">500+</p>
                 <p className="text-gray-600 mb-6">Khách sạn trên toàn quốc</p>
                 <div className="flex justify-center space-x-1 mb-4">
-                  {[1,2,3,4,5].map((star) => (
-                    <Star key={star} className="h-5 w-5 fill-current text-yellow-500" />
-                  ))}
+                  {[1, 2, 3, 4, 5].map(star => <Star key={star} className="h-5 w-5 fill-current text-yellow-500" />)}
                 </div>
                 <p className="text-sm text-gray-600">4.9/5 sao từ khách hàng</p>
               </div>
@@ -528,35 +506,19 @@ const Index = () => {
               <CardContent className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">Tên khách sạn</label>
-                  <input 
-                    type="text" 
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#142684]"
-                    placeholder="Nhập tên khách sạn"
-                  />
+                  <input type="text" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#142684]" placeholder="Nhập tên khách sạn" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">Họ tên</label>
-                  <input 
-                    type="text" 
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#142684]"
-                    placeholder="Nhập họ tên"
-                  />
+                  <input type="text" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#142684]" placeholder="Nhập họ tên" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">Email</label>
-                  <input 
-                    type="email" 
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#142684]"
-                    placeholder="Nhập email"
-                  />
+                  <input type="email" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#142684]" placeholder="Nhập email" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">Số điện thoại</label>
-                  <input 
-                    type="tel" 
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#142684]"
-                    placeholder="Nhập số điện thoại"
-                  />
+                  <input type="tel" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#142684]" placeholder="Nhập số điện thoại" />
                 </div>
                 <Button className="w-full bg-[#142684] hover:bg-[#0f1f6b] text-lg py-3">
                   Bắt đầu dùng thử miễn phí
@@ -617,8 +579,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
