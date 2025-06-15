@@ -16,7 +16,7 @@ const Index = () => {
           <nav className="hidden md:flex space-x-6">
             <a href="#features" className="text-gray-600 hover:text-[#142684] transition-colors">Tính năng</a>
             <Link to="/san-pham" className="text-gray-600 hover:text-[#142684] transition-colors">Sản phẩm</Link>
-            <a href="#benefits" className="text-gray-600 hover:text-[#142684] transition-colors">Chọn gohotel.vn</a>
+            <a href="#benefits" className="text-gray-600 hover:text-[#142684] transition-colors">Lợi ích</a>
             <a href="#pricing" className="text-gray-600 hover:text-[#142684] transition-colors">Bảng giá</a>
             <Link to="/tin-tuc" className="text-gray-600 hover:text-[#142684] transition-colors">Tin tức</Link>
             <a href="/contact" className="text-gray-600 hover:text-[#142684] transition-colors">Liên hệ</a>
