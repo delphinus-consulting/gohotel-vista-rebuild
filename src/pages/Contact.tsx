@@ -1,10 +1,23 @@
+
 import React from 'react';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { 
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { 
   Hotel, 
   Phone,
@@ -17,7 +30,46 @@ import {
 } from "lucide-react";
 import { Header } from '@/components/layout/Header';
 
+const formSchema = z.object({
+  name: z.string().min(2, { message: "Họ và tên phải có ít nhất 2 ký tự." }),
+  company_name: z.string().min(2, { message: "Tên khách sạn phải có ít nhất 2 ký tự." }),
+  email: z.string().email({ message: "Địa chỉ email không hợp lệ." }),
+  phone: z.string().min(10, { message: "Số điện thoại không hợp lệ." }),
+  room_count: z.coerce.number().int().positive().optional(),
+  message: z.string().min(10, { message: "Nội dung tin nhắn phải có ít nhất 10 ký tự." }),
+});
+
 const Contact = () => {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      company_name: "",
+      email: "",
+      phone: "",
+      message: "",
+    },
+  });
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const { error } = await supabase.from('contacts').insert({
+        name: values.name,
+        company_name: values.company_name,
+        email: values.email,
+        phone: values.phone,
+        room_count: values.room_count,
+        message: values.message,
+    });
+
+    if (error) {
+      toast.error("Gửi tin nhắn thất bại. Vui lòng thử lại sau.");
+      console.error('Error inserting contact:', error);
+    } else {
+      toast.success("Tin nhắn của bạn đã được gửi thành công!");
+      form.reset();
+    }
+  }
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -129,76 +181,111 @@ const Contact = () => {
                   Điền thông tin bên dưới và chúng tôi sẽ liên hệ lại với bạn sớm nhất
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="name">Họ và tên *</Label>
-                    <Input 
-                      id="name"
-                      type="text" 
-                      placeholder="Nhập họ và tên"
-                      className="mt-1"
+              <CardContent>
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Họ và tên *</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Nhập họ và tên" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="company_name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Tên khách sạn *</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Nhập tên khách sạn" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                       <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Email *</FormLabel>
+                            <FormControl>
+                              <Input type="email" placeholder="Nhập địa chỉ email" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                       <FormField
+                        control={form.control}
+                        name="phone"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Số điện thoại *</FormLabel>
+                            <FormControl>
+                              <Input type="tel" placeholder="Nhập số điện thoại" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                     <FormField
+                        control={form.control}
+                        name="room_count"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Số phòng khách sạn</FormLabel>
+                            <FormControl>
+                              <Input type="number" placeholder="Ví dụ: 20" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Nội dung tin nhắn *</FormLabel>
+                          <FormControl>
+                            <Textarea
+                              placeholder="Mô tả chi tiết nhu cầu của bạn hoặc câu hỏi bạn muốn tư vấn..."
+                              className="min-h-[120px]"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
-                  <div>
-                    <Label htmlFor="company">Tên khách sạn *</Label>
-                    <Input 
-                      id="company"
-                      type="text" 
-                      placeholder="Nhập tên khách sạn"
-                      className="mt-1"
-                    />
-                  </div>
-                </div>
+                    <Button type="submit" disabled={form.formState.isSubmitting} className="w-full bg-[#142684] hover:bg-[#0f1f6b] text-lg py-3">
+                       {form.formState.isSubmitting ? (
+                        "Đang gửi..."
+                      ) : (
+                        <>
+                          <Send className="h-5 w-5 mr-2" />
+                          Gửi tin nhắn
+                        </>
+                      )}
+                    </Button>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="email">Email *</Label>
-                    <Input 
-                      id="email"
-                      type="email" 
-                      placeholder="Nhập địa chỉ email"
-                      className="mt-1"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="phone">Số điện thoại *</Label>
-                    <Input 
-                      id="phone"
-                      type="tel" 
-                      placeholder="Nhập số điện thoại"
-                      className="mt-1"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <Label htmlFor="rooms">Số phòng khách sạn</Label>
-                  <Input 
-                    id="rooms"
-                    type="number" 
-                    placeholder="Ví dụ: 20"
-                    className="mt-1"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="message">Nội dung tin nhắn *</Label>
-                  <Textarea 
-                    id="message"
-                    placeholder="Mô tả chi tiết nhu cầu của bạn hoặc câu hỏi bạn muốn tư vấn..."
-                    className="mt-1 min-h-[120px]"
-                  />
-                </div>
-
-                <Button className="w-full bg-[#142684] hover:bg-[#0f1f6b] text-lg py-3">
-                  <Send className="h-5 w-5 mr-2" />
-                  Gửi tin nhắn
-                </Button>
-
-                <p className="text-sm text-gray-500 text-center">
-                  Bằng cách gửi form này, bạn đồng ý cho chúng tôi liên hệ và tư vấn về dịch vụ.
-                </p>
+                    <p className="text-sm text-gray-500 text-center">
+                      Bằng cách gửi form này, bạn đồng ý cho chúng tôi liên hệ và tư vấn về dịch vụ.
+                    </p>
+                  </form>
+                </Form>
               </CardContent>
             </Card>
           </div>
