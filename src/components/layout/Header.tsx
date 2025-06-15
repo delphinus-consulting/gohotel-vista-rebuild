@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import { Button } from "@/components/ui/button";
 import { Hotel } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -30,10 +31,10 @@ export const Header = () => {
           <span className="text-2xl font-bold text-[#142684]">gohotel.vn</span>
         </Link>
         <nav className="hidden md:flex space-x-6 items-center">
-          <Link to="/#features" className="text-gray-600 hover:text-[#142684] transition-colors">Tính năng</Link>
+          <HashLink smooth to="/#features" className="text-gray-600 hover:text-[#142684] transition-colors">Tính năng</HashLink>
           <NavLink to="/san-pham">Sản phẩm</NavLink>
-          <Link to="/#benefits" className="text-gray-600 hover:text-[#142684] transition-colors">Lợi ích</Link>
-          <Link to="/#pricing" className="text-gray-600 hover:text-[#142684] transition-colors">Bảng giá</Link>
+          <HashLink smooth to="/#benefits" className="text-gray-600 hover:text-[#142684] transition-colors">Lợi ích</HashLink>
+          <HashLink smooth to="/#pricing" className="text-gray-600 hover:text-[#142684] transition-colors">Bảng giá</HashLink>
           <NavLink to="/tin-tuc">Tin tức</NavLink>
           <NavLink to="/contact">Liên hệ</NavLink>
         </nav>
