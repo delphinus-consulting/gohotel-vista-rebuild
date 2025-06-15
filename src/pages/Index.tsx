@@ -14,8 +14,8 @@ const Index = () => {
           </div>
           <nav className="hidden md:flex space-x-6">
             <a href="#features" className="text-gray-600 hover:text-[#142684] transition-colors">Tính năng</a>
-            <a href="#benefits" className="text-gray-600 hover:text-[#142684] transition-colors">Lợi ích</a>
-            <a href="#pricing" className="text-gray-600 hover:text-[#142684] transition-colors">Giá cả</a>
+            <a href="#benefits" className="text-gray-600 hover:text-[#142684] transition-colors">Tính năng</a>
+            <a href="#pricing" className="text-gray-600 hover:text-[#142684] transition-colors">Bảng giá</a>
             <a href="/contact" className="text-gray-600 hover:text-[#142684] transition-colors">Liên hệ</a>
           </nav>
           <Button className="bg-[#142684] hover:bg-[#0f1f6b] text-white">
@@ -170,7 +170,7 @@ const Index = () => {
               <div className="text-center">
                 <Star className="h-16 w-16 text-yellow-500 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold mb-4">Được tin tưởng bởi</h3>
-                <p className="text-4xl font-bold text-[#142684] mb-2">500+</p>
+                <p className="text-4xl font-bold text-[#142684] mb-2">50+</p>
                 <p className="text-gray-600 mb-6">Khách sạn trên toàn quốc</p>
                 <div className="flex justify-center space-x-1 mb-4">
                   {[1, 2, 3, 4, 5].map(star => <Star key={star} className="h-5 w-5 fill-current text-yellow-500" />)}
