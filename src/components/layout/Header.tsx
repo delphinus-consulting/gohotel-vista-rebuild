@@ -38,8 +38,10 @@ export const Header = () => {
           <NavLink to="/tin-tuc">Tin tức</NavLink>
           <NavLink to="/contact">Liên hệ</NavLink>
         </nav>
-        <Button className="bg-[#142684] hover:bg-[#0f1f6b] text-white">
-          Dùng thử miễn phí
+        <Button asChild className="bg-[#142684] hover:bg-[#0f1f6b] text-white">
+          <HashLink smooth to="/#contact">
+            Dùng thử miễn phí
+          </HashLink>
         </Button>
       </div>
     </header>

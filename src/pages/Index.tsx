@@ -6,6 +6,7 @@ import { Hotel, Users, Calendar, CreditCard, BarChart3, Shield, Clock, Star, Che
 import { Link } from "react-router-dom";
 import { Header } from '@/components/layout/Header';
 import { TrialForm } from '@/components/forms/TrialForm';
+import { HashLink } from 'react-router-hash-link';
 
 const Index = () => {
   return <div className="min-h-screen bg-white">
@@ -24,9 +25,11 @@ const Index = () => {
             tăng doanh thu và nâng cao trải nghiệm khách hàng
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
-              Dùng thử miễn phí 15 ngày
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <Button asChild size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
+              <HashLink smooth to="/#contact">
+                Dùng thử miễn phí 15 ngày
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </HashLink>
             </Button>
             <Button size="lg" variant="outline" className="border-white hover:bg-white text-slate-950">
               Xem demo
@@ -214,8 +217,10 @@ const Index = () => {
                     Không cần thẻ tín dụng
                   </li>
                 </ul>
-                <Button className="w-full mt-6 bg-green-500 hover:bg-green-600">
-                  Bắt đầu dùng thử
+                <Button asChild className="w-full mt-6 bg-green-500 hover:bg-green-600">
+                  <HashLink smooth to="/#contact">
+                    Bắt đầu dùng thử
+                  </HashLink>
                 </Button>
               </CardContent>
             </Card>
@@ -324,8 +329,10 @@ const Index = () => {
                     Tùy chỉnh theo yêu cầu
                   </li>
                 </ul>
-                <Button className="w-full mt-6 bg-[#142684] hover:bg-[#0f1f6b]">
-                  Liên hệ tư vấn
+                <Button asChild className="w-full mt-6 bg-[#142684] hover:bg-[#0f1f6b]">
+                  <HashLink smooth to="/#contact">
+                    Liên hệ tư vấn
+                  </HashLink>
                 </Button>
               </CardContent>
             </Card>

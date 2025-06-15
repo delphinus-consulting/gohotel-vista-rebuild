@@ -32,12 +32,10 @@ export const TrialForm = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const { error } = await supabase
       .from('contacts')
-      .insert([
-        { 
+      .insert({ 
           ...values,
           message: 'Đăng ký dùng thử miễn phí',
-        },
-      ]);
+        });
 
     if (error) {
       toast({
@@ -128,4 +126,3 @@ export const TrialForm = () => {
     </Card>
   );
 };
-
