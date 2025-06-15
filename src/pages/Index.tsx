@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -24,7 +25,7 @@ const Index = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
-              Dùng thử miễn phí 30 ngày
+              Dùng thử miễn phí 15 ngày
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <Button size="lg" variant="outline" className="border-white hover:bg-white text-slate-950">
@@ -366,7 +367,7 @@ const Index = () => {
                   Đăng ký dùng thử miễn phí
                 </CardTitle>
                 <CardDescription className="text-center">
-                  30 ngày dùng thử, không cần thẻ tín dụng
+                  15 ngày dùng thử, không cần thẻ tín dụng
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
