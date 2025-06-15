@@ -3,8 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Hotel, Users, Calendar, CreditCard, BarChart3, Shield, Clock, Star, CheckCircle, ArrowRight, Phone, Mail, MapPin, Gift } from "lucide-react";
+import { Link } from "react-router-dom";
+
 const Index = () => {
-  return <div className="min-h-screen bg-white">
+  return (
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="bg-white shadow-sm border-b">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -14,9 +17,10 @@ const Index = () => {
           </div>
           <nav className="hidden md:flex space-x-6">
             <a href="#features" className="text-gray-600 hover:text-[#142684] transition-colors">Tính năng</a>
-            <a href="#benefits" className="text-gray-600 hover:text-[#142684] transition-colors">Tính năng</a>
-            <a href="#pricing" className="text-gray-600 hover:text-[#142684] transition-colors">Bảng giá</a>
-            <a href="/contact" className="text-gray-600 hover:text-[#142684] transition-colors">Liên hệ</a>
+            <a href="#benefits" className="text-gray-600 hover:text-[#142684] transition-colors">Lợi ích</a>
+            <a href="#pricing" className="text-gray-600 hover:text-[#142684] transition-colors">Giá cả</a>
+            <Link to="/tin-tuc" className="text-gray-600 hover:text-[#142684] transition-colors">Tin tức</Link>
+            <Link to="/contact" className="text-gray-600 hover:text-[#142684] transition-colors">Liên hệ</Link>
           </nav>
           <Button className="bg-[#142684] hover:bg-[#0f1f6b] text-white">
             Dùng thử miễn phí
@@ -458,6 +462,8 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
