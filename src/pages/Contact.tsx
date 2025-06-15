@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -27,11 +27,11 @@ const Contact = () => {
             <span className="text-2xl font-bold text-[#142684]">gohotel.vn</span>
           </div>
           <nav className="hidden md:flex space-x-6">
-            <a href="/" className="text-gray-600 hover:text-[#142684] transition-colors">Trang chủ</a>
-            <a href="/#features" className="text-gray-600 hover:text-[#142684] transition-colors">Tính năng</a>
-            <a href="/#benefits" className="text-gray-600 hover:text-[#142684] transition-colors">Lợi ích</a>
-            <a href="/#pricing" className="text-gray-600 hover:text-[#142684] transition-colors">Giá cả</a>
-            <a href="/contact" className="text-[#142684] font-semibold">Liên hệ</a>
+            <Link to="/" className="text-gray-600 hover:text-[#142684] transition-colors">Trang chủ</Link>
+            <Link to="/#features" className="text-gray-600 hover:text-[#142684] transition-colors">Tính năng</Link>
+            <Link to="/#benefits" className="text-gray-600 hover:text-[#142684] transition-colors">Lợi ích</Link>
+            <Link to="/#pricing" className="text-gray-600 hover:text-[#142684] transition-colors">Giá cả</Link>
+            <Link to="/contact" className="text-[#142684] font-semibold">Liên hệ</Link>
           </nav>
           <Button className="bg-[#142684] hover:bg-[#0f1f6b] text-white">
             Dùng thử miễn phí
@@ -275,10 +275,10 @@ const Contact = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4">Sản phẩm</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="/#features" className="hover:text-white">Quản lý đặt phòng</a></li>
-                <li><a href="/#features" className="hover:text-white">Quản lý khách hàng</a></li>
-                <li><a href="/#features" className="hover:text-white">Báo cáo thống kê</a></li>
-                <li><a href="/#features" className="hover:text-white">Tích hợp OTA</a></li>
+                <li><Link to="/#features" className="hover:text-white">Quản lý đặt phòng</Link></li>
+                <li><Link to="/#features" className="hover:text-white">Quản lý khách hàng</Link></li>
+                <li><Link to="/#features" className="hover:text-white">Báo cáo thống kê</Link></li>
+                <li><Link to="/#features" className="hover:text-white">Tích hợp OTA</Link></li>
               </ul>
             </div>
             
@@ -287,7 +287,7 @@ const Contact = () => {
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#" className="hover:text-white">Hướng dẫn sử dụng</a></li>
                 <li><a href="#" className="hover:text-white">Câu hỏi thường gặp</a></li>
-                <li><a href="/contact" className="hover:text-white">Liên hệ hỗ trợ</a></li>
+                <li><Link to="/contact" className="hover:text-white">Liên hệ hỗ trợ</Link></li>
                 <li><a href="#" className="hover:text-white">Đào tạo</a></li>
               </ul>
             </div>
@@ -297,7 +297,7 @@ const Contact = () => {
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#" className="hover:text-white">Về chúng tôi</a></li>
                 <li><a href="#" className="hover:text-white">Tuyển dụng</a></li>
-                <li><a href="#" className="hover:text-white">Tin tức</a></li>
+                <li><Link to="/tin-tuc" className="hover:text-white">Tin tức</Link></li>
                 <li><a href="#" className="hover:text-white">Chính sách bảo mật</a></li>
               </ul>
             </div>
