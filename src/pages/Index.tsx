@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -19,6 +18,7 @@ import {
   MapPin,
   Gift
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
@@ -78,25 +78,29 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Calendar className="h-12 w-12 text-[#142684] mb-4" />
-                <CardTitle>Quản lý đặt phòng</CardTitle>
-                <CardDescription>
-                  Quản lý đặt phòng online/offline, check-in/check-out tự động
-                </CardDescription>
-              </CardHeader>
-            </Card>
+            <Link to="/quan-ly-dat-phong">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
+                <CardHeader>
+                  <Calendar className="h-12 w-12 text-[#142684] mb-4" />
+                  <CardTitle>Quản lý đặt phòng</CardTitle>
+                  <CardDescription>
+                    Quản lý đặt phòng online/offline, check-in/check-out tự động
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </Link>
 
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Users className="h-12 w-12 text-[#142684] mb-4" />
-                <CardTitle>Quản lý khách hàng</CardTitle>
-                <CardDescription>
-                  Lưu trữ thông tin khách hàng, lịch sử lưu trú và chương trình khách hàng thân thiết
-                </CardDescription>
-              </CardHeader>
-            </Card>
+            <Link to="/quan-ly-khach-hang">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
+                <CardHeader>
+                  <Users className="h-12 w-12 text-[#142684] mb-4" />
+                  <CardTitle>Quản lý khách hàng</CardTitle>
+                  <CardDescription>
+                    Lưu trữ thông tin khách hàng, lịch sử lưu trú và chương trình khách hàng thân thiết
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </Link>
 
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
@@ -198,6 +202,141 @@ const Index = () => {
                 <p className="text-sm text-gray-600">4.9/5 sao từ khách hàng</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* System Guidelines Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Hướng dẫn hệ thống
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Các yêu cầu và thông số kỹ thuật cần thiết để vận hành hệ thống
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-2xl text-[#142684]">Yêu cầu hệ thống tối thiểu</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <h4 className="font-semibold mb-2">Phần cứng:</h4>
+                  <ul className="text-gray-600 space-y-1">
+                    <li>• CPU: Intel Core i3 hoặc tương đương</li>
+                    <li>• RAM: 4GB (khuyến nghị 8GB)</li>
+                    <li>• Ổ cứng: 50GB dung lượng trống</li>
+                    <li>• Kết nối Internet: Tốc độ tối thiểu 10Mbps</li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold mb-2">Phần mềm:</h4>
+                  <ul className="text-gray-600 space-y-1">
+                    <li>• Windows 10/11, macOS 10.15+, Ubuntu 18.04+</li>
+                    <li>• Trình duyệt: Chrome 90+, Firefox 88+, Safari 14+</li>
+                    <li>• Phần mềm bảo mật cập nhật</li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-2xl text-[#142684]">Thông số cơ sở dữ liệu</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <h4 className="font-semibold mb-2">Cấu hình đề xuất:</h4>
+                  <ul className="text-gray-600 space-y-1">
+                    <li>• Database: PostgreSQL 12+ hoặc MySQL 8.0+</li>
+                    <li>• Dung lượng lưu trữ: Tối thiểu 100GB</li>
+                    <li>• Backup tự động: Hàng ngày</li>
+                    <li>• Thời gian phản hồi: < 200ms</li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold mb-2">Bảo mật:</h4>
+                  <ul className="text-gray-600 space-y-1">
+                    <li>• Mã hóa SSL/TLS</li>
+                    <li>• Xác thực 2 lớp (2FA)</li>
+                    <li>• Audit log đầy đủ</li>
+                    <li>• Compliance GDPR</li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-2xl text-[#142684]">Hiệu suất hệ thống</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <h4 className="font-semibold mb-2">Khả năng xử lý:</h4>
+                  <ul className="text-gray-600 space-y-1">
+                    <li>• Đồng thời: 1000+ người dùng</li>
+                    <li>• Giao dịch/giây: 500+</li>
+                    <li>• Uptime: 99.9%</li>
+                    <li>• Thời gian tải trang: < 3 giây</li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold mb-2">Tích hợp:</h4>
+                  <ul className="text-gray-600 space-y-1">
+                    <li>• API RESTful</li>
+                    <li>• Webhook support</li>
+                    <li>• SDK đa nền tảng</li>
+                    <li>• Third-party plugins</li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-2xl text-[#142684]">Lưu ý quan trọng</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <h4 className="font-semibold mb-2">Môi trường:</h4>
+                  <ul className="text-gray-600 space-y-1">
+                    <li>• Nhiệt độ phòng: 18-25°C</li>
+                    <li>• Độ ẩm: 40-60%</li>
+                    <li>• UPS dự phòng khuyến nghị</li>
+                    <li>• Kiểm tra định kỳ hàng tháng</li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold mb-2">Hỗ trợ:</h4>
+                  <ul className="text-gray-600 space-y-1">
+                    <li>• Đào tạo miễn phí cho nhân viên</li>
+                    <li>• Tài liệu hướng dẫn chi tiết</li>
+                    <li>• Support 24/7 qua hotline</li>
+                    <li>• Bảo trì định kỳ</li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="mt-12 text-center">
+            <Card className="inline-block p-6 bg-yellow-50 border-yellow-200">
+              <div className="flex items-center space-x-4">
+                <Gift className="h-8 w-8 text-yellow-600" />
+                <div className="text-left">
+                  <h3 className="font-semibold text-yellow-800">Gói cài đặt miễn phí</h3>
+                  <p className="text-yellow-700">Đội ngũ kỹ thuật sẽ hỗ trợ cài đặt và cấu hình hệ thống tại khách sạn</p>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </section>
