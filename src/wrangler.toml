@@ -1,1 +1,4 @@
 main = "src/worker.ts"
+
+[build]
+command = "bun install && bun run build"
