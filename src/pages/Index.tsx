@@ -33,7 +33,7 @@ const Index = () => {
             <a href="#features" className="text-gray-600 hover:text-[#142684] transition-colors">Tính năng</a>
             <a href="#benefits" className="text-gray-600 hover:text-[#142684] transition-colors">Lợi ích</a>
             <a href="#pricing" className="text-gray-600 hover:text-[#142684] transition-colors">Giá cả</a>
-            <a href="#contact" className="text-gray-600 hover:text-[#142684] transition-colors">Liên hệ</a>
+            <a href="/contact" className="text-gray-600 hover:text-[#142684] transition-colors">Liên hệ</a>
           </nav>
           <Button className="bg-[#142684] hover:bg-[#0f1f6b] text-white">
             Dùng thử miễn phí
@@ -342,15 +342,15 @@ const Index = () => {
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">
                   <Phone className="h-6 w-6" />
-                  <span className="text-lg">1900 1234 (miễn phí)</span>
+                  <span className="text-lg">0888.806.196</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Mail className="h-6 w-6" />
-                  <span className="text-lg">info@gohotel.vn</span>
+                  <span className="text-lg">sales@gohotel.vn</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <MapPin className="h-6 w-6" />
-                  <span className="text-lg">Hà Nội, Việt Nam</span>
+                  <span className="text-lg">1180/9/10 Quang Trung, Gò Vấp, TPHCM</span>
                 </div>
               </div>
             </div>
