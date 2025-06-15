@@ -16,7 +16,8 @@ import {
   ArrowRight,
   Phone,
   Mail,
-  MapPin
+  MapPin,
+  Gift
 } from "lucide-react";
 
 const Index = () => {
@@ -213,7 +214,44 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            <Card className="relative border-2 border-green-500">
+              <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-500">
+                Miễn phí
+              </Badge>
+              <CardHeader className="text-center">
+                <Gift className="h-12 w-12 text-green-500 mx-auto mb-4" />
+                <CardTitle className="text-2xl">Dùng thử miễn phí</CardTitle>
+                <div className="text-4xl font-bold text-green-500 mb-2">
+                  15 ngày
+                </div>
+                <CardDescription>Trải nghiệm đầy đủ tính năng</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3">
+                  <li className="flex items-center">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    Tất cả tính năng
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    Không giới hạn phòng
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    Hỗ trợ 24/7
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    Không cần thẻ tín dụng
+                  </li>
+                </ul>
+                <Button className="w-full mt-6 bg-green-500 hover:bg-green-600">
+                  Bắt đầu dùng thử
+                </Button>
+              </CardContent>
+            </Card>
+
             <Card className="relative">
               <CardHeader className="text-center">
                 <CardTitle className="text-2xl">Gói Cơ bản</CardTitle>
