@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Contact from "./pages/Contact";
 import TinTuc from "./pages/TinTuc";
+import ArticleDetail from "./pages/ArticleDetail";
 import NotFound from "./pages/NotFound";
 import Product from "./pages/Product";
 import ProductBoard from "./pages/ProductBoard";
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/san-pham/khoa-thong-minh" element={<ProductKhoa />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/tin-tuc" element={<TinTuc />} />
+          <Route path="/tin-tuc/:slug" element={<ArticleDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

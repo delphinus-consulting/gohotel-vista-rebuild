@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -15,9 +16,23 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Header } from '@/components/layout/Header';
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 const TinTuc = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState("Tất cả");
+  const articlesPerPage = 6;
+
   const featuredNews = {
+    id: "ai-chatbot-247",
     title: "Ra mắt tính năng AI Chatbot tự động hỗ trợ khách hàng 24/7",
     excerpt: "Công nghệ trí tuệ nhân tạo giúp khách sạn tương tác với khách hàng mọi lúc, tăng tỷ lệ đặt phòng lên 40%",
     image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
@@ -26,9 +41,9 @@ const TinTuc = () => {
     category: "Công nghệ"
   };
 
-  const newsArticles = [
+  const allArticles = [
     {
-      id: 1,
+      id: "xu-huong-du-lich-2025",
       title: "Xu hướng du lịch 2025: Khách sạn boutique và trải nghiệm cá nhân hóa",
       excerpt: "Phân tích về sự thay đổi trong hành vi du lịch và cách khách sạn có thể thích ứng",
       image: "https://images.unsplash.com/photo-1460574283810-2aab119d8511?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
@@ -38,7 +53,7 @@ const TinTuc = () => {
       author: "Nguyễn Minh Anh"
     },
     {
-      id: 2,
+      id: "toi-uu-gia-phong",
       title: "Cách tối ưu hóa giá phòng theo mùa để tăng doanh thu",
       excerpt: "Hướng dẫn chi tiết về revenue management và dynamic pricing cho khách sạn",
       image: "https://images.unsplash.com/photo-1426604966848-d7adac402bff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
@@ -48,7 +63,7 @@ const TinTuc = () => {
       author: "Trần Văn Khoa"
     },
     {
-      id: 3,
+      id: "bao-mat-du-lieu",
       title: "Bảo mật dữ liệu khách hàng: Những điều cần biết năm 2025",
       excerpt: "Các quy định mới về bảo vệ dữ liệu cá nhân và cách tuân thủ",
       image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
@@ -58,7 +73,7 @@ const TinTuc = () => {
       author: "Lê Thị Hương"
     },
     {
-      id: 4,
+      id: "tich-hop-pms",
       title: "Tích hợp hệ thống PMS với các kênh đặt phòng trực tuyến",
       excerpt: "Hướng dẫn kết nối với Booking.com, Agoda, Expedia để tăng độ phủ",
       image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
@@ -66,21 +81,77 @@ const TinTuc = () => {
       readTime: "8 phút đọc",
       category: "Hướng dẫn",
       author: "Phạm Đức Thành"
+    },
+    // Additional articles for pagination demo
+    {
+      id: "chatbot-ai-trends",
+      title: "Tương lai của AI trong ngành khách sạn: Từ chatbot đến robot phục vụ",
+      excerpt: "Khám phá những ứng dụng AI tiên tiến đang thay đổi trải nghiệm khách hàng",
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      date: "03/06/2025",
+      readTime: "6 phút đọc",
+      category: "Công nghệ",
+      author: "Nguyễn Minh Anh"
+    },
+    {
+      id: "sustainable-hotel",
+      title: "Xu hướng khách sạn xanh và phát triển bền vững",
+      excerpt: "Làm thế nào để xây dựng một khách sạn thân thiện với môi trường",
+      image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      date: "01/06/2025",
+      readTime: "5 phút đọc",
+      category: "Xu hướng",
+      author: "Lê Thị Hương"
+    },
+    {
+      id: "mobile-checkin",
+      title: "Mobile Check-in: Tối ưu trải nghiệm khách hàng thời đại số",
+      excerpt: "Hướng dẫn triển khai hệ thống check-in di động hiệu quả",
+      image: "https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      date: "28/05/2025",
+      readTime: "7 phút đọc",
+      category: "Hướng dẫn",
+      author: "Trần Văn Khoa"
+    },
+    {
+      id: "revenue-optimization",
+      title: "10 chiến lược tối ưu doanh thu cho khách sạn vừa và nhỏ",
+      excerpt: "Những phương pháp đã được chứng minh để tăng RevPAR và ADR",
+      image: "https://images.unsplash.com/photo-1554774853-719586f82d77?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      date: "25/05/2025",
+      readTime: "9 phút đọc",
+      category: "Kinh doanh",
+      author: "Phạm Đức Thành"
     }
   ];
 
   const categories = [
-    { name: "Tất cả", count: 24, active: true },
-    { name: "Công nghệ", count: 8 },
-    { name: "Xu hướng", count: 6 },
-    { name: "Kinh doanh", count: 5 },
-    { name: "Hướng dẫn", count: 3 },
-    { name: "Bảo mật", count: 2 }
+    { name: "Tất cả", count: allArticles.length + 1, active: selectedCategory === "Tất cả" },
+    { name: "Công nghệ", count: allArticles.filter(a => a.category === "Công nghệ").length + 1 },
+    { name: "Xu hướng", count: allArticles.filter(a => a.category === "Xu hướng").length },
+    { name: "Kinh doanh", count: allArticles.filter(a => a.category === "Kinh doanh").length },
+    { name: "Hướng dẫn", count: allArticles.filter(a => a.category === "Hướng dẫn").length },
+    { name: "Bảo mật", count: allArticles.filter(a => a.category === "Bảo mật").length }
   ];
+
+  // Filter articles based on selected category
+  const filteredArticles = selectedCategory === "Tất cả" 
+    ? allArticles 
+    : allArticles.filter(article => article.category === selectedCategory);
+
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
+  const indexOfLastArticle = currentPage * articlesPerPage;
+  const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
+  const currentArticles = filteredArticles.slice(indexOfFirstArticle, indexOfLastArticle);
+
+  const handleCategoryChange = (categoryName: string) => {
+    setSelectedCategory(categoryName);
+    setCurrentPage(1); // Reset to first page when changing category
+  };
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
       <Header />
 
       {/* Hero Section */}
@@ -125,9 +196,11 @@ const TinTuc = () => {
                 <p className="text-gray-600 mb-6 leading-relaxed">
                   {featuredNews.excerpt}
                 </p>
-                <Button className="bg-[#142684] hover:bg-[#0f1f6b]">
-                  Đọc tiếp
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                <Button asChild className="bg-[#142684] hover:bg-[#0f1f6b]">
+                  <Link to={`/tin-tuc/${featuredNews.id}`}>
+                    Đọc tiếp
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -146,8 +219,9 @@ const TinTuc = () => {
                 {categories.map((category, index) => (
                   <button
                     key={index}
+                    onClick={() => handleCategoryChange(category.name)}
                     className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
-                      category.active 
+                      selectedCategory === category.name
                         ? 'bg-[#142684] text-white' 
                         : 'text-gray-600 hover:bg-gray-200'
                     }`}
@@ -194,7 +268,9 @@ const TinTuc = () => {
             {/* Articles Grid */}
             <div className="lg:col-span-3">
               <div className="flex justify-between items-center mb-8">
-                <h2 className="text-2xl font-bold">Bài viết mới nhất</h2>
+                <h2 className="text-2xl font-bold">
+                  {selectedCategory === "Tất cả" ? "Bài viết mới nhất" : `Bài viết ${selectedCategory}`}
+                </h2>
                 <select className="border border-gray-300 rounded-lg px-3 py-2">
                   <option>Mới nhất</option>
                   <option>Phổ biến nhất</option>
@@ -202,53 +278,110 @@ const TinTuc = () => {
                 </select>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                {newsArticles.map((article) => (
-                  <Card key={article.id} className="hover:shadow-lg transition-shadow">
-                    <div className="relative">
-                      <img 
-                        src={article.image} 
-                        alt={article.title}
-                        className="w-full h-48 object-cover rounded-t-lg"
-                      />
-                      <Badge className="absolute top-3 left-3 bg-[#142684]">
-                        {article.category}
-                      </Badge>
-                    </div>
-                    <CardContent className="p-6">
-                      <div className="flex items-center text-sm text-gray-500 mb-3">
-                        <Calendar className="h-4 w-4 mr-1" />
-                        {article.date}
-                        <Clock className="h-4 w-4 ml-3 mr-1" />
-                        {article.readTime}
-                      </div>
-                      <h3 className="text-lg font-semibold mb-3 line-clamp-2">
-                        {article.title}
-                      </h3>
-                      <p className="text-gray-600 mb-4 line-clamp-3">
-                        {article.excerpt}
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center text-sm text-gray-500">
-                          <User className="h-4 w-4 mr-1" />
-                          {article.author}
+              {currentArticles.length > 0 ? (
+                <>
+                  <div className="grid md:grid-cols-2 gap-6 mb-8">
+                    {currentArticles.map((article) => (
+                      <Card key={article.id} className="hover:shadow-lg transition-shadow">
+                        <div className="relative">
+                          <img 
+                            src={article.image} 
+                            alt={article.title}
+                            className="w-full h-48 object-cover rounded-t-lg"
+                          />
+                          <Badge className="absolute top-3 left-3 bg-[#142684]">
+                            {article.category}
+                          </Badge>
                         </div>
-                        <Button variant="outline" size="sm">
-                          Đọc tiếp
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+                        <CardContent className="p-6">
+                          <div className="flex items-center text-sm text-gray-500 mb-3">
+                            <Calendar className="h-4 w-4 mr-1" />
+                            {article.date}
+                            <Clock className="h-4 w-4 ml-3 mr-1" />
+                            {article.readTime}
+                          </div>
+                          <h3 className="text-lg font-semibold mb-3 line-clamp-2">
+                            <Link 
+                              to={`/tin-tuc/${article.id}`}
+                              className="hover:text-blue-600 transition-colors"
+                            >
+                              {article.title}
+                            </Link>
+                          </h3>
+                          <p className="text-gray-600 mb-4 line-clamp-3">
+                            {article.excerpt}
+                          </p>
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center text-sm text-gray-500">
+                              <User className="h-4 w-4 mr-1" />
+                              {article.author}
+                            </div>
+                            <Button variant="outline" size="sm" asChild>
+                              <Link to={`/tin-tuc/${article.id}`}>
+                                Đọc tiếp
+                              </Link>
+                            </Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
 
-              {/* Load More */}
-              <div className="text-center mt-12">
-                <Button variant="outline" size="lg">
-                  Xem thêm bài viết
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
+                  {/* Pagination */}
+                  {totalPages > 1 && (
+                    <Pagination className="justify-center">
+                      <PaginationContent>
+                        <PaginationItem>
+                          <PaginationPrevious 
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              if (currentPage > 1) setCurrentPage(currentPage - 1);
+                            }}
+                            className={currentPage === 1 ? "pointer-events-none opacity-50" : ""}
+                          />
+                        </PaginationItem>
+                        
+                        {[...Array(totalPages)].map((_, i) => (
+                          <PaginationItem key={i + 1}>
+                            <PaginationLink
+                              href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setCurrentPage(i + 1);
+                              }}
+                              isActive={currentPage === i + 1}
+                            >
+                              {i + 1}
+                            </PaginationLink>
+                          </PaginationItem>
+                        ))}
+                        
+                        <PaginationItem>
+                          <PaginationNext
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+                            }}
+                            className={currentPage === totalPages ? "pointer-events-none opacity-50" : ""}
+                          />
+                        </PaginationItem>
+                      </PaginationContent>
+                    </Pagination>
+                  )}
+                </>
+              ) : (
+                <div className="text-center py-12">
+                  <p className="text-gray-500 mb-4">Không có bài viết nào trong danh mục này.</p>
+                  <Button 
+                    variant="outline" 
+                    onClick={() => handleCategoryChange("Tất cả")}
+                  >
+                    Xem tất cả bài viết
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         </div>
