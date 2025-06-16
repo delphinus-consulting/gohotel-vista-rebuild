@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,6 +8,7 @@ import { Link } from "react-router-dom";
 import { Header } from '@/components/layout/Header';
 import { TrialForm } from '@/components/forms/TrialForm';
 import { DemoDialog } from '@/components/dialogs/DemoDialog';
+import { PricingDialog } from '@/components/dialogs/PricingDialog';
 import { HashLink } from 'react-router-hash-link';
 
 const Index = () => {
@@ -220,11 +222,14 @@ const Index = () => {
                     Không cần thẻ tín dụng
                   </li>
                 </ul>
-                <Button asChild className="w-full mt-6 bg-green-500 hover:bg-green-600">
-                  <HashLink smooth to="/#contact">
+                <PricingDialog 
+                  packageType="Gói dùng thử miễn phí"
+                  title="Đăng ký dùng thử miễn phí"
+                >
+                  <Button className="w-full mt-6 bg-green-500 hover:bg-green-600">
                     Bắt đầu dùng thử
-                  </HashLink>
-                </Button>
+                  </Button>
+                </PricingDialog>
               </CardContent>
             </Card>
 
@@ -255,9 +260,14 @@ const Index = () => {
                     Hỗ trợ email
                   </li>
                 </ul>
-                <Button className="w-full mt-6 bg-[#142684] hover:bg-[#0f1f6b]">
-                  Chọn gói này
-                </Button>
+                <PricingDialog 
+                  packageType="Gói Cơ bản"
+                  title="Đăng ký Gói Cơ bản"
+                >
+                  <Button className="w-full mt-6 bg-[#142684] hover:bg-[#0f1f6b]">
+                    Chọn gói này
+                  </Button>
+                </PricingDialog>
               </CardContent>
             </Card>
 
@@ -295,9 +305,14 @@ const Index = () => {
                     Báo cáo chi tiết
                   </li>
                 </ul>
-                <Button className="w-full mt-6 bg-[#142684] hover:bg-[#0f1f6b]">
-                  Chọn gói này
-                </Button>
+                <PricingDialog 
+                  packageType="Gói Chuyên nghiệp"
+                  title="Đăng ký Gói Chuyên nghiệp"
+                >
+                  <Button className="w-full mt-6 bg-[#142684] hover:bg-[#0f1f6b]">
+                    Chọn gói này
+                  </Button>
+                </PricingDialog>
               </CardContent>
             </Card>
 
@@ -332,11 +347,14 @@ const Index = () => {
                     Tùy chỉnh theo yêu cầu
                   </li>
                 </ul>
-                <Button asChild className="w-full mt-6 bg-[#142684] hover:bg-[#0f1f6b]">
-                  <HashLink smooth to="/#contact">
+                <PricingDialog 
+                  packageType="Gói Doanh nghiệp"
+                  title="Liên hệ tư vấn Gói Doanh nghiệp"
+                >
+                  <Button className="w-full mt-6 bg-[#142684] hover:bg-[#0f1f6b]">
                     Liên hệ tư vấn
-                  </HashLink>
-                </Button>
+                  </Button>
+                </PricingDialog>
               </CardContent>
             </Card>
           </div>
